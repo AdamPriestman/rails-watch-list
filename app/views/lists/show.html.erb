@@ -4,17 +4,28 @@
     <p><%= @list.movies.count %> movies</p>
   </div>
 </div>
+<div class="d-flex justify-content-end">
+  <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-success d-flex" %>
+</div>
 
-<% @list.bookmarks.each do |bookmark| %>
-  <div class="card-movie">
-    <img src="<%= bookmark.movie.poster_url %>" />
-      <div class="card-movie-infos">
-        <div>
-          <h2><%= bookmark.movie.title %></h2> <br>
-          <%= bookmark.movie.overview %> <br>
-          <%= bookmark.comment %> <br>
+<div class="d-flex">
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-movie">
+          <img src="<%= bookmark.movie.poster_url %>" />
+          <div class="card-movie-infos d-flex">
+            <div>
+              <h2><%= bookmark.movie.title %>  <%= bookmark.movie.rating %> ⭐️</h2>
+              <%= bookmark.movie.overview %> <br>
+            </div>
+          </div>
+            <div class="d-flex align-items-end mb-2">
+              <em>"<%= bookmark.comment %>"</em> <br>
+              <%# <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete turbo_confirm: "Are you sure?" }, class: "m-1" %>
+            </div>
         </div>
-        <h2 class="card-movie-rating"><%= bookmark.movie.rating %>⭐️</h2>
-      </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
