@@ -1,9 +1,19 @@
-<h1>Lists</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://legacybox.com/cdn/shop/articles/LBFilmReel_1024x1024.jpg?v=1563402798);">
+  <div class="container">
+    <h1>Save any kind of movies</h1>
+    <p>Le Wagon Watch List challenge</p>
+  </div>
+</div>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Add list", new_list_path %>
+<div class="d-flex">
+  <div class="container">
+    <h3 class="justify-content">My lists</h3>
+    <div class="row justify-content-center">
+      <% @lists.each do |list| %>
+        <div class="card-category col-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= link_to list.name, list_path(list) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

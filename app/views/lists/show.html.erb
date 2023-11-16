@@ -1,8 +1,20 @@
-<h1><%= @list.name %></h1>
-<ul>
-  <% @list.movies.each do |movie| %>
-    <li><%= movie.name %></li>
-  <% end %>
-</ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://legacybox.com/cdn/shop/articles/LBFilmReel_1024x1024.jpg?v=1563402798);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <p><%= @list.movies.count %> movies</p>
+  </div>
+</div>
 
-<%= link_to "Back to lists", lists_path %>
+<% @list.bookmarks.each do |bookmark| %>
+  <div class="card-movie">
+    <img src="<%= bookmark.movie.poster_url %>" />
+      <div class="card-movie-infos">
+        <div>
+          <h2><%= bookmark.movie.title %></h2> <br>
+          <%= bookmark.movie.overview %> <br>
+          <%= bookmark.comment %> <br>
+        </div>
+        <h2 class="card-movie-rating"><%= bookmark.movie.rating %>⭐️</h2>
+      </div>
+  </div>
+<% end %>
