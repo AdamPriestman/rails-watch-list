@@ -16,13 +16,13 @@
           <img src="<%= bookmark.movie.poster_url %>" />
           <div class="card-movie-infos d-flex">
             <div>
-              <h2><%= bookmark.movie.title %>  <%= bookmark.movie.rating %> ⭐️</h2>
+              <h2><%= bookmark.movie.title %>  <%= bookmark.movie.rating.round(1) %> ⭐️</h2>
               <%= bookmark.movie.overview %> <br>
             </div>
           </div>
             <div class="d-flex align-items-end mb-2">
               <em>"<%= bookmark.comment %>"</em> <br>
-              <%# <%= link_to "delete", bookmark, data: { turbo_method: :delete turbo_confirm: "Are you sure?" }, class: "m-1" %> %>
+              <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "m-1" %>
             </div>
         </div>
       <% end %>
